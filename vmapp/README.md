@@ -12,7 +12,7 @@ The sample `vmapp` application consists of two vm-based components. The `webapp`
 
 ![overview](https://github.com/kappnav/samples/blob/master/vmapp/images/overview.jpg)
 
-  An application that is modernized usually contains non-Kubernetes (e.g. vm-based) and cloud-native components. For more information, see the [PRISM demonstration](https://www.youtube.com/watch?v=Air32LCcj0c&feature=youtu.be).
+  An application that is modernized usually contains non-Kubernetes (e.g. vm-based) and cloud-native components. For more information, see the [app modernization demonstration](https://www.youtube.com/watch?v=h833ZN8KQy0&feature=youtu.be).
 
 # Prerequisites
 
