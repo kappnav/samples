@@ -1,4 +1,4 @@
-# Installing the vm component sample
+# Installing the VM-based components sample
 
 **About VM Components**
 
