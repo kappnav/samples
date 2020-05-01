@@ -3,7 +3,7 @@ kappnav sample applications
 
 ## Stocktrader 
 
-[Install instructions](https://github.com/kappnav/README/blob/master/README.md#install-sample-application)
+[Install instructions](/stocktrader)
 
 ## BookInfo
 
@@ -15,6 +15,6 @@ kappnav sample applications
 [Install instructions](/music-service)
 
 
-## Legacyapp
+## VMapp
 
-[Install instructions](/legacyapp)
+[Install instructions](/vmapp)

@@ -14,11 +14,16 @@
 # limitations under the License.
 ###############################################################################
 
-kubectl delete -f liberty-controller.yaml -n liberty-controller
-kubectl delete namespace liberty-controller
-kubectl delete -f application.yaml -n legacyapp
-kubectl delete -f webapp1.yaml -n legacyapp
-kubectl delete namespace legacyapp 
-kubectl delete -f configmap.action.liberty-sa-app.yaml -n kappnav
-kubectl delete -f configmap.status-mapping.liberty-sa-app.yaml -n kappnav
-kubectl delete -f liberty-sa-app-CRD.yaml
+apiVersion: app.k8s.io/v1beta1
+kind: Application
+metadata:
+  name: "vmapp"
+spec:
+  selector:
+    matchLabels:
+     app: "vmapp"
+  componentKinds:
+    - group: kappnav.io
+      kind: Liberty-SA-App
+    - group: kappnav.io
+      kind: JBoss-App

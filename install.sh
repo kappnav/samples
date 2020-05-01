@@ -59,10 +59,19 @@ for s in $samples; do
     if [ -e $nsf ]; then 
         ns=$(cat $nsf)
     else
-        ns='default'
+        echo Skipping sample $s. It is not designed for install via this script.
+        exit 1 
     fi
-    echo Install sample $s to namespace $ns
-    kubectl create namespace $ns 
-    echo kubectl apply -f $s -n $ns 
-    kubectl apply -f $s -n $ns 
+    # if sample has own install script, use it
+    if [ -e $s/install.sh ]; then 
+        cdir=$PWD
+        cd $s 
+        ./install.sh $ns
+        cd $cdir
+    else 
+        echo Install sample $s to namespace $ns
+        kubectl create namespace $ns 
+        echo kubectl apply -f $s -n $ns 
+        kubectl apply -f $s -n $ns 
+    fi
 done

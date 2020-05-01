@@ -15,14 +15,17 @@
 ###############################################################################
 
 apiVersion: kappnav.io/v1beta1
-kind: Liberty-SA-App
+kind: JBoss-App
 metadata:
-  name: "webapp1"
+  name: "helloworld"
   labels:
-    app: "legacyapp"
+    app: "vmapp"
   annotations:
     protocall: "http"
     host: "HOSTNAME"
-    port: "9080"
+    console-port: "9990"
+    app-port: "8080"
+    server: "standalone"
+    node: "NODENAME"
     kappnav.platform.kind: "VM"
     kappnav.platform.name: "HOSTNAME"

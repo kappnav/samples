@@ -1,22 +1,20 @@
-# Installing the legacy component sample
+# Installing the vm component sample
 
-**About Legacy Components**
+**About VM Components**
 
-Applications can include legacy components as well as new, cloud native components.  This is common during application modernization scenarios, where parts of a monolith are transformed to, or replaced by, cloud native components. This [short video](https://www.youtube.com/watch?v=h833ZN8KQy0&feature=youtu.be) demonstrates an actual example, based on the stocktrader application. 
+Applications can include non-Kubernetes (e.g. VM-based) components as well as new, cloud native components.  This is common during application modernization scenarios, where parts of a monolith are transformed to, or replaced by, cloud native components. This [short video](https://www.youtube.com/watch?v=h833ZN8KQy0&feature=youtu.be) demonstrates an actual example, based on the stocktrader application. 
 
-The sample in this repository demonstrates how you can represent and include legacy components as part of your application, as displayed by Kubernetes Application Navigator. 
+The sample in this repository demonstrates how you can represent and include vm components as part of your application, as displayed by Kubernetes Application Navigator. 
 
 # Overview 
 
-The sample `legacyapp` application consists of two legacy components. The `webapp` component runs on a stand-alone WebSphere Liberty server that runs on a virtual machine. The `helloworld` component runs on a JBoss server that also runs on a virtual machine.
+The sample `vmapp` application consists of two vm-based components. The `webapp` component runs on a stand-alone WebSphere Liberty server that runs on a virtual machine. The `helloworld` component runs on a JBoss server that also runs on a virtual machine.
 
-![overview](https://github.com/kappnav/samples/blob/master/legacyapp/images/overview.jpg)
+![overview](https://github.com/kappnav/samples/blob/master/vmapp/images/overview.jpg)
 
-  An application that is modernized usually contains legacy and cloud-native components. For more information, see the [PRISM demonstration](https://www.youtube.com/watch?v=Air32LCcj0c&feature=youtu.be).
+  An application that is modernized usually contains non-Kubernetes (e.g. vm-based) and cloud-native components. For more information, see the [PRISM demonstration](https://www.youtube.com/watch?v=Air32LCcj0c&feature=youtu.be).
 
 # Prerequisites
-
-
 
    1. [Install kAppNav](https://github.com/kappnav/README).
    1. [Install WebSphere Liberty](https://developer.ibm.com/wasdev/downloads/#asset/runtimes-wlp-webProfile8) to create the default server.  
@@ -82,7 +80,7 @@ The sample `legacyapp` application consists of two legacy components. The `webap
 
    ```
    git clone https://github.com/kappnav/samples.git
-   cd kappnav/samples/legacyapp/liberty
+   cd kappnav/samples/vmapp/liberty
    ./install.sh \<hostname\>
    ```
 
@@ -97,17 +95,17 @@ The sample `legacyapp` application consists of two legacy components. The `webap
    
    Hostname is the hostname of the VM that you installed and started the JBoss server with and hosts the `helloworld` sample.
    
- # The legacyapp sample as viewed through Kubernetes Application Navigator.
+ # The vmapp sample as viewed through Kubernetes Application Navigator.
 
-![overview](https://github.com/kappnav/samples/blob/master/legacyapp/images/applications.jpg)
+![overview](https://github.com/kappnav/samples/blob/master/vmapp/images/applications.jpg)
 
-![overview](https://github.com/kappnav/samples/blob/master/legacyapp/images/components.jpg)
+![overview](https://github.com/kappnav/samples/blob/master/vmapp/images/components.jpg)
 
 # Stopping components 
 
 If you stop the WebSphere Liberty and JBoss servers, Kubernetes Application Navigator updates the status to show that the components are down:
 
-![overview](https://github.com/kappnav/samples/blob/master/legacyapp/images/stopped.jpg)
+![overview](https://github.com/kappnav/samples/blob/master/vmapp/images/stopped.jpg)
 
 # Selecting actions 
 
@@ -115,30 +113,30 @@ On the component view page, you can select pre-defined actions to perform in the
 
 ## Liberty stand-alone application action - View home page 
 
-![overview](https://github.com/kappnav/samples/blob/master/legacyapp/images/liberty-action.jpg)
+![overview](https://github.com/kappnav/samples/blob/master/vmapp/images/liberty-action.jpg)
 
-![overview](https://github.com/kappnav/samples/blob/master/legacyapp/images/liberty-home.jpg)
+![overview](https://github.com/kappnav/samples/blob/master/vmapp/images/liberty-home.jpg)
 
 ## JBoss application actions
 
 ### Viewing the application configuration
 
-![overview](https://github.com/kappnav/samples/blob/master/legacyapp/images/jboss-view-config.jpg)
+![overview](https://github.com/kappnav/samples/blob/master/vmapp/images/jboss-view-config.jpg)
 
-![overview](https://github.com/kappnav/samples/blob/master/legacyapp/images/jboss-config.jpg)
+![overview](https://github.com/kappnav/samples/blob/master/vmapp/images/jboss-config.jpg)
 
 ### Viewing the server metrics 
 
-![overview](https://github.com/kappnav/samples/blob/master/legacyapp/images/jboss-view-metrics.jpg)
+![overview](https://github.com/kappnav/samples/blob/master/vmapp/images/jboss-view-metrics.jpg)
 
-![overview](https://github.com/kappnav/samples/blob/master/legacyapp/images/jboss-metrics.jpg)
+![overview](https://github.com/kappnav/samples/blob/master/vmapp/images/jboss-metrics.jpg)
 
 # Uninstalling the sample application
 
 Use the following `uninstall.sh` scripts to uninstall the sample application with Kubernetes: 
 
 ```
-cd kappnav/samples/legacyapp/liberty
+cd kappnav/samples/vmapp/liberty
 ./uninstall.sh 
 ```
 

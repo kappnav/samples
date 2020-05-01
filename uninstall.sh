@@ -59,12 +59,21 @@ for s in $samples; do
     if [ -e $nsf ]; then 
         ns=$(cat $nsf)
     else
-        ns='default'
+        echo Skipping sample $s. It is not designed for uninstall via this script.
+        exit 1 
     fi
-    echo Uninstall sample $s to namespace $ns
-    echo kubectl delete -f $s -n $ns 
-    kubectl delete -f $s -n $ns 
-    if [ $ns != 'default' ]; then
-       kubectl delete namespace $ns 
+        # if sample has own uninstall script, use it
+    if [ -e $s/uninstall.sh ]; then 
+        cdir=$PWD
+        cd $s 
+        ./uninstall.sh $ns
+        cd $cdir
+    else 
+        echo Uninstall sample $s to namespace $ns
+        echo kubectl delete -f $s -n $ns 
+        kubectl delete -f $s -n $ns 
+        if [ $ns != 'default' ]; then
+            kubectl delete namespace $ns 
+        fi
     fi
 done

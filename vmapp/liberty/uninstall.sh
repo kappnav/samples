@@ -14,18 +14,11 @@
 # limitations under the License.
 ###############################################################################
 
-apiVersion: kappnav.io/v1beta1
-kind: JBoss-App
-metadata:
-  name: "helloworld"
-  labels:
-    app: "legacyapp"
-  annotations:
-    protocall: "http"
-    host: "HOSTNAME"
-    console-port: "9990"
-    app-port: "8080"
-    server: "standalone"
-    node: "NODENAME"
-    kappnav.platform.kind: "VM"
-    kappnav.platform.name: "HOSTNAME"
+kubectl delete -f liberty-controller.yaml -n liberty-controller
+kubectl delete namespace liberty-controller
+kubectl delete -f application.yaml -n vmapp
+kubectl delete -f webapp1.yaml -n vmapp
+kubectl delete namespace vmapp 
+kubectl delete -f configmap.action.liberty-sa-app.yaml -n kappnav
+kubectl delete -f configmap.status-mapping.liberty-sa-app.yaml -n kappnav
+kubectl delete -f liberty-sa-app-CRD.yaml

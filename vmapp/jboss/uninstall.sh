@@ -14,16 +14,12 @@
 # limitations under the License.
 ###############################################################################
 
-apiVersion: app.k8s.io/v1beta1
-kind: Application
-metadata:
-  name: "legacyapp"
-spec:
-  selector:
-    matchLabels:
-     app: "legacyapp"
-  componentKinds:
-    - group: kappnav.io
-      kind: Liberty-SA-App
-    - group: kappnav.io
-      kind: JBoss-App
+kubectl delete -f jboss-controller.yaml -n jboss-controller
+kubectl delete namespace jboss-controller
+kubectl delete -f application.yaml -n vmapp
+kubectl delete -f helloworld.yaml -n vmapp
+kubectl delete -f configmap.action.jboss-app.helloworld.yaml -n vmapp
+kubectl delete namespace vmapp
+kubectl delete -f configmap.status-mapping.jboss-app.yaml -n kappnav 
+kubectl delete -f configmap.action.jboss-app.yaml -n kappnav 
+kubectl delete -f jboss-app-CRD.yaml 

@@ -26,10 +26,10 @@ fi
 nodename=$(echo $hostname | awk {'n=split($1,v,"."); print v[1]'})
 
 kubectl apply -f jboss-app-CRD.yaml 
-kubectl create namespace legacyapp
-kubectl apply -f application.yaml -n legacyapp
-cat helloworld.yaml | sed "s|HOSTNAME|$hostname|" | sed "s|NODENAME|$nodename|" | kubectl apply -f - -n legacyapp
-kubectl apply -f configmap.action.jboss-app.helloworld.yaml -n legacyapp
+kubectl create namespace vmapp
+kubectl apply -f application.yaml -n vmapp
+cat helloworld.yaml | sed "s|HOSTNAME|$hostname|" | sed "s|NODENAME|$nodename|" | kubectl apply -f - -n vmapp
+kubectl apply -f configmap.action.jboss-app.helloworld.yaml -n vmapp
 kubectl apply -f configmap.status-mapping.jboss-app.yaml -n kappnav 
 kubectl apply -f configmap.action.jboss-app.yaml -n kappnav 
 kubectl create namespace jboss-controller

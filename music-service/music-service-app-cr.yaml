@@ -20,4 +20,3 @@ spec:
   selector:
     matchLabels:
       solution: music-service
-

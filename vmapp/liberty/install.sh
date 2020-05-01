@@ -13,17 +13,21 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 ###############################################################################
+# syntax:  install.sh <hostname>
+# hostname cannot be localhost
+# hostname must be dot-qualified hostname - e.g. myhost.com
+hostname=$1
 
-apiVersion: app.k8s.io/v1beta1
-kind: Application
-metadata:
-  name: "legacyapp"
-spec:
-  selector:
-    matchLabels:
-     app: "legacyapp"
-  componentKinds:
-    - group: kappnav.io
-      kind: Liberty-SA-App
-    - group: kappnav.io
-      kind: JBoss-App
+if [ x$hostname == x ]; then
+	echo Must specify hostname
+	exit 1 
+fi
+
+kubectl apply -f liberty-sa-app-CRD.yaml 
+kubectl create namespace vmapp
+kubectl apply -f application.yaml -n vmapp
+cat webapp1.yaml | sed "s|HOSTNAME|$hostname|" | kubectl apply -f - -n vmapp
+kubectl apply -f configmap.action.liberty-sa-app.yaml -n kappnav
+kubectl apply -f configmap.status-mapping.liberty-sa-app.yaml -n kappnav
+kubectl create namespace liberty-controller
+kubectl apply -f liberty-controller.yaml -n liberty-controller
