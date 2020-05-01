@@ -3,11 +3,7 @@
 ## Install "Giddyup version" of Stock Trader Application 
 
 1. Clone the sample repository with the following command: `git clone https://github.com/kappnav/samples.git`
-1. Create the `stock-trader` sample namespace with the following command: 
-
-   ```
-   kubectl create namespace stock-trader
-   ```
+1. Create the `stock-trader` sample namespace with the following command: `kubectl create namespace stock-trader`
 
    ```
    # kubectl create namespace stocktrader
